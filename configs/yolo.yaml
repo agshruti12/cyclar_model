@@ -1,0 +1,4 @@
+model: yolo11n.pt
+imgsz: 640
+conf: 0.25
+vehicle_classes: ["car", "truck", "bus", "motorcycle"]
