@@ -1,0 +1,17 @@
+# Raw data and generated artifacts
+data_raw/
+detections/
+features/
+outputs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+.env/
+
+# Mac
+.DS_Store
