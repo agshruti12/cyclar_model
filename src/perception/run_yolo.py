@@ -43,7 +43,11 @@ def main():
         "area_frac",
         "bottom_y_norm",
         "center_x_dist",
-        # optional but handy:
+
+        "count_in_roi_all",
+        "max_area_in_roi_all",
+        "max_bottom_y_in_roi_all",
+
         "fps",
     ]
 

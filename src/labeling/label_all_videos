@@ -1,0 +1,36 @@
+import glob
+import os
+
+from src.labeling.label_video_scene import label_single_video
+
+
+def main():
+    video_glob = "data_raw/*.mp4"
+    video_paths = sorted(glob.glob(video_glob))
+
+    if not video_paths:
+        print(f"No videos found matching {video_glob}")
+        return
+
+    print("Found videos:")
+    for i, vp in enumerate(video_paths):
+        print(f"  [{i}] {vp}")
+
+    for vp in video_paths:
+        base = os.path.splitext(os.path.basename(vp))[0]
+        out_json = os.path.join("labels", f"{base}_scene_labels.json")
+
+        if os.path.exists(out_json):
+            print(f"\nSkipping {vp} (labels already exist at {out_json})")
+            continue
+
+        label_single_video(vp, out_json, segment_seconds=1.0)
+
+        ans = input("Continue to next video? [Y/n]: ").strip().lower()
+        if ans == "n":
+            print("Stopping multi-video labeling.")
+            break
+
+
+if __name__ == "__main__":
+    main()

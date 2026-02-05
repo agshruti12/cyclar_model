@@ -4,12 +4,18 @@ set -euo pipefail
 mkdir -p features
 
 for v in data_raw/*.mp4; do
-  [ -e "$v" ] || continue  # if no mp4 files, don't error
-  base="$(basename "$v" .mp4)"
+  [ -e "$v" ] || { echo "No .mp4 files found in data_raw/"; exit 0; }
 
-  python src/perception/run_yolo.py \
+  base="$(basename "$v" .mp4)"
+  out="features/${base}.csv"
+
+  echo "=== Processing: $v -> $out ==="
+
+  PYTHONPATH=. python src/perception/run_yolo.py \
     --video "$v" \
-    --out "features/${base}.csv" \
+    --out "$out" \
     --config configs/yolo.yaml \
     --yolo_stride 1
 done
+
+echo "Done. Wrote per-video CSVs to ./features/"
