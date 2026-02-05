@@ -1,6 +1,6 @@
 # Raw data and generated artifacts
 data_raw/
-detections/
+features/
 
 # Python
 __pycache__/
