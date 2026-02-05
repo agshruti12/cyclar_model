@@ -1,6 +1,5 @@
 # cyclar_model
 
-
 ### Global Frame Features
 
 These summarize the **most dominant detected vehicle** in the full frame.
@@ -55,7 +54,6 @@ These aggregate information about vehicles in the **primary danger zone** behind
 
   *Indicates how close the nearest vehicle in the ROI is to the cyclist.*
 
-
 Commands:
 
 * Requrements installation: pip install -r requirements.txt
@@ -76,4 +74,4 @@ PYTHONPATH=. python src/labeling/apply_scene_labels_to_csv.py
 
 * Merge all csvs
 
-PYTHONPATH=. python src/utils/merge_feature_csvs.py
+PYTHONPATH=. python src/merge_feature_csvs.py
