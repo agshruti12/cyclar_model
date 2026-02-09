@@ -108,4 +108,9 @@ def train_and_export(
 
 
 if __name__ == "__main__":
-    train_and_export("features.csv", "risk_lr_artifact.json")
+    train_and_export(
+        "features.csv",
+        "risk_lr_artifact.json",
+        label_col="risk_label",
+        id_cols=("video", "frame", "fps"),   # add "fps" here too if you want to drop it
+    )
