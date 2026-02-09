@@ -13,3 +13,7 @@ venv/
 
 # Mac
 .DS_Store
+.cyclar-venv/
+__pycache__/
+*.pyc
+data_raw/
