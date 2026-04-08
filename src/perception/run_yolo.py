@@ -90,6 +90,9 @@ def main():
                 frame_h=frame_h,
                 video=str(Path(args.video).name),
             )
+
+
+            
             feat["fps"] = float(fps)
 
             writer.writerow(feat)

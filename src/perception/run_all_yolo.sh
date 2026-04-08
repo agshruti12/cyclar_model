@@ -11,7 +11,7 @@ for v in data_raw/*.mp4; do
 
   echo "=== Processing: $v -> $out ==="
 
-  PYTHONPATH=. python src/perception/run_yolo.py \
+  PYTHONPATH=. python src/perception/run_yolo_temp.py \
     --video "$v" \
     --out "$out" \
     --config configs/yolo.yaml \
