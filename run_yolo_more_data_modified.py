@@ -7,7 +7,7 @@ import yaml
 from tqdm import tqdm
 from ultralytics import YOLO
 
-from src.features_eng.build_features import compute_frame_features, box_center
+from src.features_eng.build_features_minimalist import compute_frame_features, box_center
 
 
 # One row per side (Left/Right) per frame
@@ -17,16 +17,20 @@ FIELDNAMES = [
 
     # frame-level features
     "count_total",
-    "area_frac",
-    "bottom_y_norm",
-    "max_conf",
+
+    # largest box
+    "largest_area_frac",
+    "largest_bottom_y_norm",
+    "largest_conf",
+
+    # closest box
     "closest_area_frac",
     "closest_bottom_y_norm",
-    "danger_zone_hit",
-    "lateral_spread",
-    "count_far",
-    "count_mid",
-    "count_near",
+    "closest_conf",
+
+    # light aggregate context
+    "sum_area_frac",
+    "mean_conf"
 ]
 
 

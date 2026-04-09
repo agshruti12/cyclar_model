@@ -21,13 +21,13 @@ Data Cleaning:
 2. Merge labels with features (entire folder)
 
 python data_cleaning/merge_all_features_labels.py \
-  --features_dir outputs/ \
+  --features_dir features_minimalist/ \
   --labels_dir final_labels/ \
-  --output_dir merged_output/
+  --output_dir merged_output_minimalist/
 
 3. Merge all CSVs into one master CSVs
 
-python data_cleaning/merge_master_csv.py --input_dir merged_output
+python data_cleaning/merge_master_csv.py --input_dir merged_output_minimalist
 
 4. Training (checkout to training branch)
 
