@@ -1,6 +1,10 @@
 # Raw data and generated artifacts
 data_raw/
 features/
+final_data/
+final_labels/
+outputs/
+merged_output/
 
 # Python
 __pycache__/
