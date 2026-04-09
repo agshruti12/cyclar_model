@@ -33,3 +33,18 @@ python data_cleaning/merge_master_csv.py --input_dir merged_output_minimalist
 
 python train_lr_master.py --csv master_features_labelled.csv
 python leave_one_video_out_eval.py --csv master_features_labelled.csv
+
+
+
+ONCE features are done making:
+
+1. merge labels
+2. merge into large CSV
+3. python leave_one_video_out_eval.py --csv master_features_labelled_minimalist.csv
+see if it's giving better results this time around, if it is, then train final model as listed below
+4. python train_lr_master.py --csv master_features_labelled_minimalist.csv
+
+
+to copy into pi:
+1. copy the build_features.py function
+2. copy the risk_lr_artifact.json

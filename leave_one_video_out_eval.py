@@ -7,7 +7,7 @@ from typing import Dict, Tuple, Optional
 import numpy as np
 import pandas as pd
 from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import confusion_matrix, classification_report, accuracy_score
+from sklearn.metrics import confusion_matrix, classification_report, accuracy_score, f1_score
 from sklearn.preprocessing import StandardScaler
 
 
@@ -150,6 +150,18 @@ def evaluate_leave_one_video_out(
         y_pred = clf.predict(X_test_s)
         acc = accuracy_score(y_test, y_pred)
 
+        all_labels = sorted(label_map.values())   # [0, 1, 2]
+
+
+        report = classification_report(y_test, y_pred, labels=all_labels, output_dict=True, zero_division=0)
+
+        macro_f1 = f1_score(y_test, y_pred, average="macro", labels=all_labels, zero_division=0)
+    
+        medium_recall = report["1"]["recall"]   # assuming MEDIUM = 1
+        medium_precision = report["1"]["precision"]
+        high_recall = report["2"]["recall"]   # assuming HIGH = 2
+        high_precision = report["2"]["precision"]
+
         print(f"\nHeld-out video: {held_out_video}")
         print(f"Train rows: {len(train_df)} | Test rows: {len(test_df)}")
         print(f"Accuracy: {acc:.4f}")
@@ -164,6 +176,11 @@ def evaluate_leave_one_video_out(
                 "train_rows": len(train_df),
                 "test_rows": len(test_df),
                 "accuracy": round(float(acc), 4),
+                "macro_f1": round(float(macro_f1), 4),
+                "medium_recall": round(float(medium_recall), 4),
+                "medium_precision": round(float(medium_precision), 4),
+                "high_recall": round(float(high_recall), 4),
+                "high_precision": round(float(high_precision), 4),
             }
         )
 
